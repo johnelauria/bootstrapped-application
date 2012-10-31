@@ -1,0 +1,30 @@
+<h1>Listing recipes</h1>
+
+<table class="table" align="center">
+  <tr>
+    <th>Name</th>
+    <th>Instruction</th>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @recipes.each do |recipe| %>
+  <tr>
+    <td><%= recipe.name %></td>
+    <td><%= truncate(strip_tags(recipe.instruction), length: 50) %></td>
+    <td><%= recipe.date %></td>
+    <td>
+      <div class="btn-group">
+    <%= link_to 'Show', recipe, class: "btn btn-info" %>
+    <%= link_to 'Edit', edit_recipe_path(recipe), class: "btn btn-warning " %>
+    <%= link_to 'Destroy', recipe, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+  </div></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Recipe', new_recipe_path %>

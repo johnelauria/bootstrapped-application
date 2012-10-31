@@ -1,0 +1,41 @@
+<h1>Listing users</h1>
+<div class="row">
+<div class="span8 offset2">
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td>
+      <div class="btn-group">
+        <a class="btn btn-info"><i class="icon-eye-open"></i></a>
+        <%= link_to "Show", user, class: "btn btn-info" %>
+      </div></td>
+    <td>
+      <div class="btn-group">
+        <a class="btn btn-warning" href="#"><i class="icon-pencil icon-white"></i></a>
+        <%= link_to 'Edit', edit_user_path(user), class: "btn btn-warning" %>
+      </div></td>
+    <td>
+      <div class="btn-group">
+        <a class="btn btn-danger"><i class="icon-trash icon-white"></i></a>
+        <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </td>
+      </div>
+  </tr>
+<% end %>
+</table>
+</div>
+</div>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>
